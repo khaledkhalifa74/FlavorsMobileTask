@@ -1,17 +1,26 @@
 # flavors_mobile_task
 
-A new Flutter project.
+A Flutter project demonstrating **Android product flavors** with **separate entry points and asset bundles** for **development** and **production** builds.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📌 Overview
 
-A few resources to get you started if this is your first Flutter project:
+This project showcases how to:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Use Flutter flavors (`development` / `production`)
+- Run different `main` files per flavor
+- Configure Android Gradle flavors using **Kotlin DSL**
+- Separate assets per flavor to control APK size
+- Make development builds larger than production builds
+- Prevent development assets from leaking into production
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# FlavorsMobileTask
+---
+
+## 🧩 Flavors
+
+| Flavor | Application ID | App Name |
+|------|---------------|----------|
+| development | `com.example.flavors_mobile_task.dev` | Flavors development |
+| production | `com.example.flavors_mobile_task` | Flavors production |
+
