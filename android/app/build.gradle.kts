@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.flavors_mobile_task"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -28,6 +28,33 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+    }
+    flavorDimensions += "default"
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "Flavors development")
+            applicationIdSuffix = ".dev"
+        }
+        create("production") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "Flavors production")
+        }
+    }
+    sourceSets {
+        getByName("development") {
+            assets.srcDirs("src/development/assets")
+        }
+
+        getByName("production") {
+            assets.srcDirs("src/production/assets")
+        }
     }
 
     buildTypes {
