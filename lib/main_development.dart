@@ -1,8 +1,15 @@
-import 'package:flavors_mobile_task/features/home/home_screen.dart';
+import 'package:flavors_mobile_task/core/theming/colors.dart';
+import 'package:flavors_mobile_task/features/home/presentation/screens/enter_your_name_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,14 +21,25 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flavors Development',
       theme: ThemeData(
-          colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: .fromSeed(seedColor: ColorsManager.kDevelopmentPrimary),
+      textTheme: GoogleFonts.playfairDisplayTextTheme(),
       appBarTheme: const AppBarTheme(
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
+        backgroundColor: ColorsManager.kDevelopmentPrimary,
+        foregroundColor: ColorsManager.kWhite,
         elevation: 0,
       ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            backgroundColor: ColorsManager.kDevelopmentPrimary,
+            foregroundColor: ColorsManager.kWhite,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+        ),
     ),
-    home: const HomeScreen(),
+    home: const EnterYourNameScreen(),
     );
     }
 }
