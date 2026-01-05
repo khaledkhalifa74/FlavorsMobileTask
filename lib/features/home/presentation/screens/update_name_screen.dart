@@ -12,17 +12,11 @@ class UpdateNameScreen extends ConsumerStatefulWidget {
 }
 
 class _UpdateNameScreenState extends ConsumerState<UpdateNameScreen> {
-  final _nameController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final userName = ref.watch(nameProvider);
+    final notifier = ref.read(nameProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +60,7 @@ class _UpdateNameScreenState extends ConsumerState<UpdateNameScreen> {
               ),
               const SizedBox(height: 16),
               TextField(
-                controller: _nameController,
+                controller: notifier.nameController,
                 decoration: InputDecoration(
                   labelText: 'Update Your Name',
                   hintText: 'Enter new name',
@@ -82,11 +76,9 @@ class _UpdateNameScreenState extends ConsumerState<UpdateNameScreen> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () {
-                  if (_nameController.text.trim().isNotEmpty) {
-                    // Update the provider
-                    ref.read(nameProvider.notifier).state = _nameController.text.trim();
-          
-                    _nameController.clear();
+                  if (notifier.nameController.text.trim().isNotEmpty) {
+                    notifier.updateName();
+                    notifier.nameController.clear();
 
                     showSnackBar(
                       context,

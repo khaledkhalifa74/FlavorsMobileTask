@@ -47,15 +47,15 @@ android {
                 value = "Flavors production")
         }
     }
-    sourceSets {
-        getByName("development") {
-            assets.srcDirs("src/development/assets")
-        }
-
-        getByName("production") {
-            assets.srcDirs("src/production/assets")
-        }
-    }
+//    sourceSets {
+//        getByName("development") {
+//            assets.srcDirs("src/development/assets")
+//        }
+//
+//        getByName("production") {
+//            assets.srcDirs("src/production/assets")
+//        }
+//    }
 
     buildTypes {
         release {
