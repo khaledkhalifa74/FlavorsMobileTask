@@ -77,7 +77,7 @@ class _UpdateNameScreenState extends ConsumerState<UpdateNameScreen> {
               ElevatedButton(
                 onPressed: () {
                   if (notifier.nameController.text.trim().isNotEmpty) {
-                    notifier.updateName();
+                    notifier.addName();
                     notifier.nameController.clear();
 
                     showSnackBar(
